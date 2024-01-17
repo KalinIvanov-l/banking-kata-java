@@ -1,10 +1,12 @@
 package com.optivem.kata.banking.adapter.driven.microservice.fake;
 
 import com.optivem.kata.banking.core.ports.driven.CustomerGateway;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class FakeCustomerGateway implements CustomerGateway {
 
     private static final boolean BLACKLISTED = true;
