@@ -25,15 +25,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ActiveProfiles({ProfileNames.ADAPTER_PERSISTENCE_JDBC, ProfileNames.ADAPTER_GENERATION_RANDOM, ProfileNames.ADAPTER_TIME_SYSTEM, ProfileNames.ADAPTER_MICROSERVICE_SIM, ProfileNames.ADAPTER_THIRDPARTY_SIM})
 @Sql({"/bank_account_table.sql"})
 public class JdbcBankAccountStorageTest extends BankAccountStorageTest {
-    @Autowired
-    public JdbcBankAccountStorageTest(BankAccountStorage storage, AccountIdGenerator accountIdGenerator, AccountNumberGenerator accountNumberGenerator) {
-        super(storage, accountIdGenerator, accountNumberGenerator);
-    }
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     private JdbcBankAccountStorage jdbcBankAccountStorage;
+
+    @Autowired
+    public JdbcBankAccountStorageTest(BankAccountStorage storage, AccountIdGenerator accountIdGenerator, AccountNumberGenerator accountNumberGenerator) {
+        super(storage, accountIdGenerator, accountNumberGenerator);
+    }
 
     @BeforeEach
     void init() {
