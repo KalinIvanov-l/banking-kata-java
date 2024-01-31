@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-@Component("RedisBankAccountStorage")
+@Component("redisBankAccountStorage")
 @Profile(ProfileNames.ADAPTER_PERSISTENCE_REDIS)
 public class RedisBankAccountStorage implements BankAccountStorage {
 
