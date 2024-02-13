@@ -2,6 +2,7 @@ package com.optivem.kata.banking.adapter.driven.thirdparty.real;
 
 import com.optivem.kata.banking.adapter.driven.base.ProfileNames;
 import com.optivem.kata.banking.core.ports.driven.NationalIdentityGateway;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class RealNationalIdentityGateway implements NationalIdentityGateway {
 
     private final String url;
 
-    public RealNationalIdentityGateway(String url) {
+    public RealNationalIdentityGateway(@Value("${national.identity.gateway.url}") String url) {
         this.url = url;
     }
 
