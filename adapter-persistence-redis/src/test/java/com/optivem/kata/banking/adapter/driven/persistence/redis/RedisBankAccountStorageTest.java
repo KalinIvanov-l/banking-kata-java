@@ -17,7 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 class RedisBankAccountStorageTest extends BankAccountStorageTest {
 
     @Autowired
-    public RedisBankAccountStorageTest(@Qualifier("RedisBankAccountStorage") BankAccountStorage storage, AccountIdGenerator accountIdGenerator, AccountNumberGenerator accountNumberGenerator) {
+    public RedisBankAccountStorageTest(@Qualifier("redisBankAccountStorage") BankAccountStorage storage, AccountIdGenerator accountIdGenerator, AccountNumberGenerator accountNumberGenerator) {
         super(storage, accountIdGenerator, accountNumberGenerator);
     }
 }
