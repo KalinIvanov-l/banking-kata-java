@@ -12,7 +12,6 @@ import com.optivem.kata.banking.core.ports.driven.events.FundsDepositedDto;
 import com.optivem.kata.banking.core.ports.driver.VoidResponse;
 import com.optivem.kata.banking.core.ports.driver.accounts.depositfunds.DepositFundsRequest;
 import com.optivem.kata.banking.core.ports.driver.exceptions.ValidationMessages;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -30,26 +29,23 @@ import static com.optivem.kata.banking.core.common.data.MethodSources.NULL_EMPTY
 
 class DepositFundsUseCaseTest {
 
-    private FakeBankAccountStorage storage;
-    private FakeDateTimeService dateTimeService;
-    private FakeEventBus eventBus;
-    private Command.Handler<DepositFundsRequest, VoidResponse> useCase;
+    private final FakeBankAccountStorage storage = new FakeBankAccountStorage();
+    private final FakeDateTimeService dateTimeService = new FakeDateTimeService();
+    private final FakeEventBus eventBus = new FakeEventBus();
+    private final FakeAccountIdGenerator accountIdGenerator = new FakeAccountIdGenerator();
+    private final FakeAccountNumberGenerator accountNumberGenerator = new FakeAccountNumberGenerator();
+    private final CleanArchUseCaseFactory useCaseFactory = new CleanArchUseCaseFactory();
+    private final Command.Handler<DepositFundsRequest, VoidResponse> useCase = useCaseFactory.createDepositFundsHandler
+            (storage,
+                    accountIdGenerator,
+                    accountNumberGenerator,
+                    dateTimeService,
+                    eventBus
+            );
 
     private static Stream<Arguments> should_deposit_funds_given_valid_request() {
         return Stream.of(Arguments.of("GB41OMQP68570038161775", 0, 50, 50),
                 Arguments.of("GB41OMQP68570038161776", 100, 50, 150));
-    }
-
-    @BeforeEach
-    void init() {
-        this.storage = new FakeBankAccountStorage();
-        var accountIdGenerator = new FakeAccountIdGenerator();
-        var accountNumberGenerator = new FakeAccountNumberGenerator();
-        this.dateTimeService = new FakeDateTimeService();
-        this.eventBus = new FakeEventBus();
-
-        var useCaseFactory = new CleanArchUseCaseFactory();
-        this.useCase = useCaseFactory.createDepositFundsHandler(storage, accountIdGenerator, accountNumberGenerator, dateTimeService, eventBus);
     }
 
     @ParameterizedTest
