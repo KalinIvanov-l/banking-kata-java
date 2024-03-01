@@ -1,4 +1,4 @@
-package com.optivem.kata.banking;
+package com.optivem.kata.banking.model;
 
 import lombok.Builder;
 import lombok.Data;

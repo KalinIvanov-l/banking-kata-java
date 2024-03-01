@@ -1,5 +1,6 @@
-package com.optivem.kata.banking;
+package com.optivem.kata.banking.service;
 
+import com.optivem.kata.banking.model.CustomerDto;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

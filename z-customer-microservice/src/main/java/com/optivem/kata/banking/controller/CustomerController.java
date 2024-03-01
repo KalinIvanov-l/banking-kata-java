@@ -1,5 +1,7 @@
-package com.optivem.kata.banking;
+package com.optivem.kata.banking.controller;
 
+import com.optivem.kata.banking.model.CustomerDto;
+import com.optivem.kata.banking.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
