@@ -2,6 +2,7 @@ package com.optivem.kata.banking.core.domain;
 
 import com.optivem.kata.banking.core.internal.cleanarch.domain.accounts.AccountId;
 import com.optivem.kata.banking.core.ports.driver.exceptions.ValidationMessages;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -14,5 +15,11 @@ class AccountIdTest {
     void should_throw_exception_given_non_positive_value() {
         verifyThat(() -> AccountId.of(0))
                 .shouldThrowValidationException(ValidationMessages.ACCOUNT_ID_NON_POSITIVE);
+    }
+
+    @Test
+    void should_throw_exception_given_negative_value() {
+        verifyThat(() -> AccountId.of(-1))
+              .shouldThrowValidationException(ValidationMessages.ACCOUNT_ID_NON_POSITIVE);
     }
 }
