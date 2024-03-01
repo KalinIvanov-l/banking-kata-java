@@ -11,14 +11,14 @@ import com.optivem.kata.banking.core.ports.driver.exceptions.ValidationMessages;
 import static com.optivem.kata.banking.core.internal.crud.common.Guard.guard;
 
 public class OpenAccountUseCase implements Command.Handler<OpenAccountRequest, OpenAccountResponse> {
-    private NationalIdentityGateway nationalIdentityGateway;
-    private CustomerGateway customerGateway;
-    private BankAccountStorage bankAccountStorage;
-    private AccountIdGenerator accountIdGenerator;
-    private AccountNumberGenerator accountNumberGenerator;
-    private DateTimeService dateTimeService;
+    private final NationalIdentityGateway nationalIdentityGateway;
+    private final CustomerGateway customerGateway;
+    private final BankAccountStorage bankAccountStorage;
+    private final AccountIdGenerator accountIdGenerator;
+    private final AccountNumberGenerator accountNumberGenerator;
+    private final DateTimeService dateTimeService;
 
-    private EventBus eventBus;
+    private final EventBus eventBus;
 
     public OpenAccountUseCase(NationalIdentityGateway nationalIdentityGateway, CustomerGateway customerGateway, BankAccountStorage bankAccountStorage, AccountIdGenerator accountIdGenerator, AccountNumberGenerator accountNumberGenerator, DateTimeService dateTimeService, EventBus eventBus) {
         this.nationalIdentityGateway = nationalIdentityGateway;
